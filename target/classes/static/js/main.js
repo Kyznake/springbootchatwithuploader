@@ -30,34 +30,34 @@ var colors = [
 
 
 
-// function connect(event) {
-//     username = document.querySelector('#name').value.trim();
+ function connect(event) {
+     username = document.querySelector('#name').value.trim();
 
-//     if(username) {
-//         usernamePage.classList.add('hidden');
-//         chatPage.classList.remove('hidden');
+     if(username) {
+         usernamePage.classList.add('hidden');
+         chatPage.classList.remove('hidden');
 
-//         var socket = new SockJS('/ws');
-//         stompClient = Stomp.over(socket);
+         var socket = new SockJS('/ws');
+         stompClient = Stomp.over(socket);
 
-//         stompClient.connect({}, onConnected, onError);
-//     }
-//     event.preventDefault();
-// }
+         stompClient.connect({}, onConnected, onError);
+     }
+     event.preventDefault();
+ }
 
 
-// function onConnected() {
-//     // Subscribe to the Public Topic
-//     stompClient.subscribe('/topic/public', onMessageReceived);
+ function onConnected() {
+     // Subscribe to the Public Topic
+     stompClient.subscribe('/topic/public', onMessageReceived);
 
-//     // Tell your username to the server
-//     stompClient.send("/app/chat.addUser",
-//         {},
-//         JSON.stringify({sender: username, type: 'JOIN'})
-//     )
+     // Tell your username to the server
+     stompClient.send("/app/chat.addUser",
+         {},
+         JSON.stringify({sender: username, type: 'JOIN'})
+     )
 
-//     connectingElement.classList.add('hidden');
-// }
+     connectingElement.classList.add('hidden');
+ }
 
 
 function onError(error) {
@@ -204,8 +204,6 @@ singleUploadForm.addEventListener('submit', function(event){
     uploadMultipleFiles(files);
     event.preventDefault();
 }, true); */
-
-
 
 usernameForm.addEventListener('submit', connect, true)
 messageForm.addEventListener('submit', sendMessage, true)
